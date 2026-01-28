@@ -1598,6 +1598,7 @@ a {
     background: var(--off-white);
     position: relative;
     overflow: hidden;
+    display: none;
 }
 
 /* Testimonials Background Elements */
