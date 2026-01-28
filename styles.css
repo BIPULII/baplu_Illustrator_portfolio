@@ -1312,6 +1312,17 @@ a {
     animation: shimmer 3s ease-in-out infinite;
 }
 
+.portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.portfolio-item:hover .portfolio-img {
+    transform: scale(1.05);
+}
+
 .character-preview,
 .scene-preview,
 .animal-preview,
