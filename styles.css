@@ -1355,6 +1355,7 @@ a {
 .published-works {
     padding: var(--spacing-xxl) var(--spacing-lg);
     background: linear-gradient(135deg, var(--light-mint) 0%, var(--light-yellow) 100%);
+    display: none;
 }
 
 .works-grid {
