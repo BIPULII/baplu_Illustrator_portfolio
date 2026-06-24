@@ -2334,3 +2334,84 @@ a {
         box-shadow: none;
     }
 }
+
+/* ============================================
+   Artist Gallery Section
+   ============================================ */
+.artist-gallery {
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    background: linear-gradient(135deg, var(--light-yellow) 0%, var(--light-blue) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.artist-gallery-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+    color: var(--dark-gray);
+}
+
+.artist-subsection {
+    margin-bottom: var(--spacing-xxl);
+}
+
+.artist-subtitle {
+    text-align: center;
+    font-size: var(--text-3xl);
+    margin-bottom: var(--spacing-xl);
+    color: var(--dark-text);
+}
+
+.artist-photo-grid,
+.artist-video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.artist-photo-card,
+.artist-video-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    transition: var(--transition-normal);
+}
+
+.artist-photo-card:hover,
+.artist-video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.artist-photo {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+.artist-video {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    background: #000;
+}
+
+.artist-photo-card h4,
+.artist-video-card h4 {
+    padding: var(--spacing-md);
+    font-size: var(--text-xl);
+    color: var(--dark-text);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .artist-photo,
+    .artist-video {
+        height: 230px;
+    }
+}
