@@ -6,6 +6,17 @@
 /**
  * DOM READY - Initialize all features when DOM is loaded
  */
+// document.addEventListener('DOMContentLoaded', function() {
+//     initializeNavigation();
+//     initializeScrollAnimations();
+//     initializeParallax();
+//     initializePortfolioFilters();
+//     initializeFormSubmission();
+//     initializeSmoothScroll();
+//     initializeButtonAnimations();
+//     initializePortfolioLightbox();
+
+// });
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeScrollAnimations();
@@ -14,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFormSubmission();
     initializeSmoothScroll();
     initializeButtonAnimations();
+    initializePortfolioLightbox();
 });
 
 /* ============================================
@@ -155,17 +167,14 @@ function initializePortfolioFilters() {
         button.addEventListener('click', function() {
             const filterValue = this.getAttribute('data-filter');
 
-            // Update active button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
-            // Filter items with animation
             portfolioItems.forEach(item => {
                 const itemCategory = item.getAttribute('data-category');
 
                 if (filterValue === 'all' || itemCategory === filterValue) {
                     item.classList.remove('hidden');
-                    item.style.animation = 'fadeInScale 0.6s ease forwards';
                 } else {
                     item.classList.add('hidden');
                 }
@@ -201,13 +210,7 @@ function initializeButtonAnimations() {
         });
     });
 
-    // Portfolio items with lightbox
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems.forEach(item => {
-        item.addEventListener('click', function() {
-            openLightbox();
-        });
-    });
+    
 }
 
 /* ============================================
@@ -231,12 +234,7 @@ function openLightbox() {
     }
 }
 
-function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox) {
-        lightbox.classList.remove('active');
-    }
-}
+
 
 /* ESC key to close lightbox */
 document.addEventListener('keydown', function(event) {
@@ -466,9 +464,60 @@ function initializeAccessibility() {
         document.body.classList.remove('keyboard-focus');
     });
 }
+function initializePortfolioLightbox() {
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeBtn = document.querySelector('.lightbox-close');
 
+    portfolioItems.forEach((item) => {
+        item.addEventListener('click', function () {
+            const img = item.querySelector('.portfolio-img');
+
+            if (!img || !lightbox || !lightboxImage) return;
+
+            lightboxImage.src = img.src;
+            lightboxImage.alt = img.alt;
+
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeLightbox);
+    }
+
+    if (lightbox) {
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    }
+}
+
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+
+    if (lightbox) {
+        lightbox.classList.remove('active');
+    }
+
+    if (lightboxImage) {
+        lightboxImage.src = '';
+        lightboxImage.alt = '';
+    }
+
+    document.body.style.overflow = '';
+}
 // Initialize accessibility features
 initializeAccessibility();
+// Initialize lazy loading
+
+
 
 /* ============================================
    PERFORMANCE TRACKING

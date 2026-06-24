@@ -2076,6 +2076,15 @@ a {
     color: var(--primary-peach);
     transform: scale(1.2);
 }
+#lightbox-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    display: block;
+}
 
 /* ============================================
    Scroll Animations
