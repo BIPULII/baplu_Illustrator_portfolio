@@ -1621,7 +1621,7 @@ a {
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-normal);
-    display: none;
+    display: block;
 }
 
 .step-image[src]:not([src=""]) {
